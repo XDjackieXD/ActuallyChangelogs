@@ -7,14 +7,13 @@
 </xmp>
 
 <script type="text/javascript">
-var gotit = false
 
 function getFileFromServer(url, doneCallback) {
     var xhr;
 
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = handleStateChange;
-    xhr.open("GET", url, true);
+    xhr.open("GET", url, false);
     xhr.send();
 
     function handleStateChange() {
@@ -30,12 +29,10 @@ function gotFile(response) {
   }
   else {
     document.getElementById("markdown").innerHTML=response
-    gotit = true
   }
 }
 
 getFileFromServer("https://raw.githubusercontent.com/Ellpeck/ActuallyAdditions/master/update/changelog.md", gotFile);
-while(!gotit){}
 
 </script>
 <script src="strapdown/strapdown.js"></script>
