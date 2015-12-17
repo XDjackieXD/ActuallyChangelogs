@@ -28,15 +28,10 @@ function gotFile(response) {
   }
   else {
     document.getElementById("markdown").innerHTML=response
-    checkloadjscssfile("strapdown/strapdown.js", "js")
+    var fileref=document.createElement('script')
+    fileref.setAttribute("type","text/javascript")
+    fileref.setAttribute("src", "strapdown/strapdown.js")
   }
-}
-
-function checkloadjscssfile(filename, filetype){
-    if (filesadded.indexOf("["+filename+"]")==-1){
-        loadjscssfile(filename, filetype)
-        filesadded+="["+filename+"]" //List of files added in the form "[filename1],[filename2],etc"
-    }
 }
 
 getFileFromServer("https://raw.githubusercontent.com/Ellpeck/ActuallyAdditions/master/update/changelog.md", gotFile);
