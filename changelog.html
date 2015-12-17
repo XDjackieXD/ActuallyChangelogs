@@ -28,10 +28,18 @@ function gotFile(response) {
   }
   else {
     document.getElementById("markdown").innerHTML=response
+    checkloadjscssfile("strapdown/strapdown.js", "js")
   }
+}
+
+function checkloadjscssfile(filename, filetype){
+    if (filesadded.indexOf("["+filename+"]")==-1){
+        loadjscssfile(filename, filetype)
+        filesadded+="["+filename+"]" //List of files added in the form "[filename1],[filename2],etc"
+    }
 }
 
 getFileFromServer("https://raw.githubusercontent.com/Ellpeck/ActuallyAdditions/master/update/changelog.md", gotFile);
 </script>
-<script src="strapdown/strapdown.js"></script>
+<!--script src="strapdown/strapdown.js"></script-->
 </html>
