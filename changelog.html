@@ -7,6 +7,8 @@
 </xmp>
 
 <script type="text/javascript">
+var gotit = false
+
 function getFileFromServer(url, doneCallback) {
     var xhr;
 
@@ -28,13 +30,13 @@ function gotFile(response) {
   }
   else {
     document.getElementById("markdown").innerHTML=response
-    var fileref=document.createElement('script')
-    fileref.setAttribute("type","text/javascript")
-    fileref.setAttribute("src", "strapdown/strapdown.js")
+    gotit = true
   }
 }
 
 getFileFromServer("https://raw.githubusercontent.com/Ellpeck/ActuallyAdditions/master/update/changelog.md", gotFile);
+while(!gotit){}
+
 </script>
-<!--script src="strapdown/strapdown.js"></script-->
+<script src="strapdown/strapdown.js"></script>
 </html>
