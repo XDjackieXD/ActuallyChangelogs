@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<title>Actually Additions Changelog</title>
+<meta charset="utf-8"/>
+
+<xmp theme="united" style="display:none;" id="markdown">
+</xmp>
+
+<script type="text/javascript">
+function getFileFromServer(url, doneCallback) {
+    var xhr;
+
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = handleStateChange;
+    xhr.open("GET", url, true);
+    xhr.send();
+
+    function handleStateChange() {
+        if (xhr.readyState === 4) {
+            doneCallback(xhr.status == 200 ? xhr.responseText : null);
+        }
+    }
+}
+
+function gotFile(response) {
+  if (response === null) {
+    document.getElementById("markdown").innerHTML="An error occured while loading the changelog!"
+  }
+  else {
+    document.getElementById("markdown").innerHTML=response
+  }
+}
+
+getFileFromServer("https://raw.githubusercontent.com/Ellpeck/ActuallyAdditions/master/update/changelog.md", gotFile);
+</script>
+<script src="strapdown/strapdown.js"></script>
+</html>
